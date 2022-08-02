@@ -115,6 +115,8 @@ nn = df.withColumn("expert_photo", \
 from pyspark.sql.functions import col
 print(df.filter(col("ratingAndReviewNumber").isNotNull()).count())
 
+#count the number of NotNull values in each column of df
+df.select([count(when(col(c).isNotNull(), c)).alias(c) for c in df.columns]).display()
 
 # Get min value in the column:
 df.groupby().min('age').collect()[0].asDict()['min(age)']
@@ -125,9 +127,22 @@ display(df.filter(col("specialty").like("Audio")))
 
 # Select distinct values in a column:
 display(df.select('practiceLocationMainName').distinct())
+df.select(countDistinct("ID")).show()
 
 # Select rows equal to the value:
 df = df.filter(df.Level == '1')
 
 #Join on ID:
 df.join(AudioL,df.ID == AudioL.ID,"inner").display()
+
+
+#new dataframe with the flag to separate found and not found actions
+df2 = df.withColumn("flag",
+                    when(lower(col("Text")).contains('no board actions found'), 1)
+                    .when(lower(col("Text")).contains('no disciplinary actions found'), 2)
+                    .when(lower(col("Text")).contains('no malpractice claims found'), 3)
+                    .when(lower(col("Text")).contains('healthgrades does not collect malpractice claims information'), 4)
+                    .when(lower(col("Text")).contains('malpractice claim'), 5)
+                    .when(lower(col("Text")).contains('board action'), 6)
+                    .when(lower(col("Text")).contains('disciplinary action'), 7)
+                    .otherwise(0))
