@@ -11,3 +11,8 @@ ss.dropDuplicates(['primarySpecialty']).display()
 
 # to see all column names:
 ss.columns
+
+
+# finding the length of string values in column:
+S= df14.select('formattedDate').withColumn('length', 
+                F.length(col('formattedDate')))
