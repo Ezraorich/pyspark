@@ -20,3 +20,6 @@ S= df14.select('formattedDate').withColumn('length',
 
 # selecting the column with length where is less than 5:
 S.filter('length<5').display()
+
+#show the columns containing some value, ex:.
+df14.filter(col('formattedDate').contains('.')).display()
