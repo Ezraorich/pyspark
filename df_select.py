@@ -16,3 +16,7 @@ ss.columns
 # finding the length of string values in column:
 S= df14.select('formattedDate').withColumn('length', 
                 F.length(col('formattedDate')))
+
+
+# selecting the column with length where is less than 5:
+S.filter('length<5').display()
