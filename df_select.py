@@ -23,3 +23,7 @@ S.filter('length<5').display()
 
 #show the columns containing some value, ex:.
 df14.filter(col('formattedDate').contains('.')).display()
+
+# Not equal to some value: filter:
+new = df13.filter(col('practiceLocationMainName')!='Practice')
+
