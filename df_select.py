@@ -27,3 +27,8 @@ df14.filter(col('formattedDate').contains('.')).display()
 # Not equal to some value: filter:
 new = df13.filter(col('practiceLocationMainName')!='Practice')
 
+
+from pyspark.sql.functions import col
+cms_cert =cms_certification.filter( (cms_certification.certificationName  == "American") | (cms_certification.certificationName  == "Board (Clinical Informatics)") |(cms_certification.certificationName  =='HHHAHXHBXHSB')|(cms_certification.certificationName=='Amejskksk, PA') )
+cms_cert.count()
+
