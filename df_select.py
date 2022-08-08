@@ -32,5 +32,14 @@ from pyspark.sql.functions import col
 cms_cert =cms_certification.filter( (cms_certification.certificationName  == "American") | (cms_certification.certificationName  == "Board (Clinical Informatics)") |(cms_certification.certificationName  =='HHHAHXHBXHSB')|(cms_certification.certificationName=='Amejskksk, PA') )
 cms_cert.count()
 
-#CMS_bio.subtract(CMS_description).display()
+dfbio.subtract(dfdescription).display()
+
+from pyspark.sql.functions import regexp_replace
+from pyspark.sql.functions import when
+ee = df17.withColumn('expert_photo', 
+    when(df17.expert_photo.endswith('//photos.healthgrades.com/img/silhouettes/silhouette-male_w90h120_v1.jpg'),regexp_replace(df17.expert_photo,'//photos.healthgrades.com/img/silhouettes/silhouette-female_w120h160_v1.jpg',None)) \
+   .when(df17.expert_photo.endswith('//photos.healthgrades.com/img/silhouettes/silhouette-female_w90h120_v1.jpg'),regexp_replace(df17.expert_photo,'//photos.healthgrades.com/img/silhouettes/silhouette-female_w90h120_v1.jpg',None)) \
+   
+   .otherwise(df17.expert_photo)) \
+   
 
