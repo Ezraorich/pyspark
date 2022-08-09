@@ -41,5 +41,15 @@ ee = df17.withColumn('expert_photo',
    .when(df17.expert_photo.endswith('//photos.healthgrades.com/img/silhouettes/silhouette-female_w90h120_v1.jpg'),regexp_replace(df17.expert_photo,'//photos.healthgrades.com/img/silhouettes/silhouette-female_w90h120_v1.jpg',None)) \
    
    .otherwise(df17.expert_photo)) \
+
+from pyspark.sql.functions import col,when
+nn = hg_bio.withColumn("expert_photo", \
+       when(col("expert_photo")=="//photos.health.com/img/silhouettes/silhouette-female_w90h120_v1.jpg" ,None)
+       .when(col("expert_photo")=="//phot.com/img/silhouettes/silhouette-male_w90h120_v1.jpg" ,None)
+       .when(col("expert_photo")=="//phots.com/img/silhouettes/silhouette-male_w120h160_v1.jpg" ,None) 
+       .when(col("expert_photo")=="//photocom/img/silhouettes/silhouette-female_w120h160_v1.jpg" ,None)
+       .when(col("expert_photo")=="//photos.com/img/silhouettes/silhouette-unknown_w90h120_v1.jpg" ,None)
+       .when(col("expert_photo")=="//photos.com/img/silhouettes/silhouette-unknown_w120h160_v1.jpg" ,None) 
+          .otherwise(col("expert_photo")))
    
 
