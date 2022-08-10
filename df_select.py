@@ -53,3 +53,5 @@ nn = hg_bio.withColumn("expert_photo", \
           .otherwise(col("expert_photo")))
    
 
+procedure = df4.select('ID', 'conditionAndProcedureId', 'conditionAndProcedureName', 'conditionAndProcedureLevel', 'conditionAndProcedurePercentile', 'childDescriptor').where(col('conditionAndProcedureIsCondition')=='false')
+procedure.count()
