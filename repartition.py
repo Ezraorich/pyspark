@@ -15,3 +15,6 @@ print('Percentage of coverage with Pub_Year, Article_Year and PubDate_MedDate:',
 
 # select 4 letters in df column:
 new = df4.withColumn('PubDate_Medline_year', df4.PubDate_MedlineDate.substr(1, 4))
+
+
+dd1 = dd1.withColumn('Result', ( dd1['A'] - dd1['B'] ) / dd1['A'] )
