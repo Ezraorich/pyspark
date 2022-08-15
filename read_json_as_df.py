@@ -135,6 +135,13 @@ df = df.filter(df.Level == '1')
 #Join on ID:
 df.join(AudioL,df.ID == AudioL.ID,"inner").display()
 
+# df column1 -df column2:
+d = df4.withColumn('Year_difference', ( df4['Date_Year'] - df4['Date_Year_2'] ) )
+
+# selecting 2 not null columns:
+date_not_null = d.filter((col('Date_Year').isNotNull())&(col('Date_Year_2').isNotNull()))
+
+
 
 #new dataframe with the flag to separate found and not found actions
 df2 = df.withColumn("flag",
