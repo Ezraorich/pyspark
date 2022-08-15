@@ -1,0 +1,6 @@
+A = df4.filter(df4.PubDate_Year.isNotNull()).select('PubDate_Year')
+A = A.repartition(4*4*8).persist()
+A.count()
+B = df4.filter(df4.ArticleDate_Year.isNotNull()).select('ArticleDate_Year')
+B = B.repartition(4*4*8).persist()
+B.count()
