@@ -12,3 +12,6 @@ coverage = d.count()-d.filter((col('Pub_Year').isNull())&(col('PubDate_MedDate')
 print('Pub_Year, Article_Year and PubDate_MedDate filled amount: ',coverage)
 print('Overall number:',d.count())
 print('Percentage of coverage with Pub_Year, Article_Year and PubDate_MedDate:',(coverage/d.count())*100)
+
+# select 4 letters in df column:
+new = df4.withColumn('PubDate_Medline_year', df4.PubDate_MedlineDate.substr(1, 4))
