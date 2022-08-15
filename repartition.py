@@ -18,3 +18,5 @@ new = df4.withColumn('PubDate_Medline_year', df4.PubDate_MedlineDate.substr(1, 4
 
 
 dd1 = dd1.withColumn('Result', ( dd1['A'] - dd1['B'] ) / dd1['A'] )
+
+df4.write.parquet("/mnt/raw/Data/SaltanatTest/",mode="overwrite")
