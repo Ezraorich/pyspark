@@ -27,3 +27,6 @@ CList.alias('l').join(dfPI.alias('r'), on='physician').count()
 photo  = photo.select('imageURL', 'N').where(col("imageURL").isNotNull())
 
 ss =CMSList.select('primarySpecialty','primarySubSpecialty','N','firstName','lastName').distinct().where((col("primarySpecialty").isNotNull())&col("primarySubSpecialty").isNotNull())
+
+
+Cccc.subtract(Hhhh).display()
