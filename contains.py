@@ -30,3 +30,7 @@ ss =CMSList.select('primarySpecialty','primarySubSpecialty','N','firstName','las
 
 
 Cccc.subtract(Hhhh).display()
+
+Au.select('Code').filter(col("Specialty")
+    .rlike("Audio")
+  ).distinct().display()
