@@ -1,0 +1,1 @@
+dfr = spark.read.format("com.crealytics.spark.excel").option("header", "true").load('dbfs:/FileStore/HG_saltanat/HG/_primaryNotStudent.xlsx')
