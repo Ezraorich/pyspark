@@ -10,3 +10,7 @@ circuits_renamed_df = circuits_selected_df.withColumnrenamed('circuitsId', 'circ
 .withColumnRenamed('lng', 'longitude')\
 .withColumnRenamed('alt', 'altitude')\
 .withColumn('data_source', lit(v_data_source))
+
+
+v_result = bdutils.notebook.run('8.inget_qualifuing_file', 0, {"p_data_source": "Ergast API"})
+dbutils.notebook.exit("Success")
