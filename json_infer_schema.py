@@ -28,3 +28,6 @@ drivers_with_column_df = drivers_df.withColumnRenamed('driverId', 'driver_id')\
                                    .withColumnRenamed('driverRef', 'driver_ref')\
                                    .withColumn('ingestion_date', current_timestamp())\
                                    .withColumn('name', concat(col('name.forename'), lit(' '), col('col.name.surname')))
+
+
+drivers_with_column_df.write.mode('overwrite').parquet('/mnt/formula1/qualifying')
