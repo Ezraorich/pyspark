@@ -1,3 +1,6 @@
+#from the course Real World Project on Formula1 Racing for Data Engineers using Azure Databricks, Delta Lake, Azure Data Factory [DP203]
+
+
 from pyspark.sql.functions import col, concat, current_timestamp, lit
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType, Datetype
 
