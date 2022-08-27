@@ -8,4 +8,5 @@ dd.select(col('SpecialtyName'), row_number().over(window).alias('row_number')) \
   .display()
   
   
-  https://sparkbyexamples.com/spark/spark-sql-window-functions/
+https://sparkbyexamples.com/spark/spark-sql-window-functions/
+https://jaceklaskowski.gitbooks.io/mastering-spark-sql/content/spark-sql-functions-windows.html
