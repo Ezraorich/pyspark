@@ -18,3 +18,8 @@ new = df13.filter(col('Location')!='Astana')
 
 df17.filter(('age>90 and age<121')
 CSList= CSList.dropDuplicates(['ID'])
+ 
+demo_df\
+.groupBy("driver_name")\
+.agg(sum("points"), countDistinct("race_name"))\
+.show()
