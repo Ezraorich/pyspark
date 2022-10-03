@@ -1,0 +1,4 @@
+
+
+df = spark.sql('select * from PROVIDER_SPECIALTY_FILTERED')
+df.createOrReplaceTempView('CLAIMS_PROVIDER_SPECIALTY')
