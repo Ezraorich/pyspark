@@ -34,3 +34,23 @@ drivers_with_column_df = drivers_df.withColumnRenamed('driverId', 'driver_id')\
 
 
 drivers_with_column_df.write.mode('overwrite').parquet('/mnt/formula1/qualifying')
+
+
+
+
+## Method 2:
+from pyspark.sql.functions import *
+
+dataframe = spark.read.format('delta').load('/mnt/path/')
+
+hospital = dataframe.select(col('HOSPITALAFFILIATION_LIST').alias('organization_name'), col('ID').alias('id_number'))
+
+hos = hospital.select(hospital.id_number, posexplode(hospital.organization_name))
+
+hos_split = hos.withColumn("organization_name", hos.col.getItem("EXPERT_HOSPITAL_AFFILIATION"))\
+.withColumn("org_address1", hos.col.getItem("EXPERT_HOSP_AFF_STREETADDRESS"))\
+.withColumn("EXPERT_HOSP_AFF_ADDRESSCOUNTRY", hos.col.getItem('EXPERT_HOSP_AFF_ADDRESSCOUNTRY'))\
+.withColumn("org_city", hos.col.getItem("EXPERT_HOSP_AFF_CITY"))\
+.withColumn("org_state", hos.col.getItem("EXPERT_HOSP_AFF_STATE"))\
+.withColumn("EXPERT_HOSP_AFF_POSTALCODE", hos.col.getItem("EXPERT_HOSP_AFF_POSTALCODE"))
+
