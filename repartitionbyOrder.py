@@ -27,7 +27,7 @@ for i in range(len(asd)-1):
         z.append((asd[i]+1, asd[i+1]))
         
         
-        
+# WRITING IN CSV FORMAT:        
 counter = 1
 for i, j in z:
     filename = f'/mnt/raw/DataCuration/dump/manual_curated_file_{counter}.xlsx'
@@ -36,3 +36,19 @@ for i, j in z:
     print(filename)
     
     counter+=1
+    
+    
+    
+# WRITING IN EXCEL FORMAT:   
+counter = 1
+for i, j in z:
+    filename = f'/mnt/raw/DataCuration/dump/manual_curated_file_{counter}.xlsx'
+    print(f'counter <= {j} and counter >={i}')
+    swa  = df.filter(f'counter <= {j} and counter >={i}')
+    swa.write.format("com.crealytics.spark.excel").option("header", "true").mode("overwrite").save(filename)
+    counter+=1
+    
+    
+    
+    
+
