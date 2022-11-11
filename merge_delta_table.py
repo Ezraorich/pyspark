@@ -15,7 +15,7 @@ else:
                                                                           
 ### function:
 merge_condition = 'tgt.results_id = src.result_id AND tgt.race_id = src.race_id'
-merge_delta_data(results_final_df, 'f1+processed', 'results', processed_folder_path, merge_condition, 'race_id')                                                                         
+merge_delta_data(results_final_df, 'f1_processed', 'results', processed_folder_path, merge_condition, 'race_id')                                                                         
                                                                           
 def merge_delta_data (input_df, db_name, table_name, forlder_path, merge_condition, partition_column):
   spark.conf.set('spark.databricks.optimizer.dynamicPartitionPruning', 'true')
