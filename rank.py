@@ -1,11 +1,10 @@
 from pyspark.sql.window import Window
 from pyspark.sql.functions import rank, col
 
-n = 3
-dd.select(col('SpecialtyName'), row_number().over(window).alias('row_number')) \
-  .where(col('row_number') <= n) \
-  .filter()
-  .display()
+from pyspark.sql.window import Window
+
+ror = LOCATIONS_TABLE_RECOGNITIONINFO.withColumn("row_num", row_number().over(Window.partitionBy("RECOGNITIONCATEGORYNAME").orderBy("RECOGNITIONCATEGORYNAME")))
+ror.filter(ror.row_num<4  ).display()
   
   
 https://sparkbyexamples.com/spark/spark-sql-window-functions/
