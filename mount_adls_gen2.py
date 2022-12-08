@@ -1,3 +1,9 @@
+# create azure service principal --> 
+# azure portal ---> app registration ---> then  you will get client ID and tenant ID
+# under manage find "certificates and secrets" --> "new client secret" ---> copy VALUE (client_secret)
+# go to your storage Account --- access control (IAM) --- add ---> select role - Storage Blob Contributor
+
+
 storage_account_name = "formula1dl"
 client_id  = "b9f023a-70cd-44f6-a2d2-fff1d6939edc"
 tenant_id  = "65947afd-b0be-440f-b3d5-2ca66af0ef41"
