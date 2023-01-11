@@ -14,3 +14,5 @@ WHERE race_year = 2020
 %sql
 
 SELECT * FROM v_race_results 
+
+df = sqlContext.table("v_race_results")
